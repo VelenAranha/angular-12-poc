@@ -23,7 +23,7 @@ describe("HeaderComponent", () => {
   })
 
   it("Title must be 'Github search'", () => {
-    const appHeaderEl: HTMLElement = fixture.nativeElement
+    const appHeaderEl: HTMLElement = fixture.nativeElement as HTMLElement
     const titleEl = appHeaderEl.getElementsByClassName("navbar-brand")[0]
     expect(titleEl.textContent).toEqual("Github search")
   })

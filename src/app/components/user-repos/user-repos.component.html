@@ -1,0 +1,17 @@
+<div class="app-user-repos p-5">
+  <div class="row">
+    <ng-container *ngIf="!isLoading; else loadingIndicator">
+      <app-user-repo-card
+        class="col-md-6 my-2"
+        *ngFor="let repo of repos"
+        [repo]="repo"
+      ></app-user-repo-card>
+    </ng-container>
+    <ng-template #loadingIndicator>
+      <app-user-repo-loading
+        class="col-md-6 my-2"
+        *ngFor="let repo of counter(5)"
+      ></app-user-repo-loading>
+    </ng-template>
+  </div>
+</div>

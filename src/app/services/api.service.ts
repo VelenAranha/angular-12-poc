@@ -16,7 +16,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(searchQuery: string) {
+  getUsers(searchQuery: string): Observable<string[]> {
     return this.http
       .get<UserSearchResults>(
         `${this.apiUrl}/search/users?q=${searchQuery}&per_page=10`
@@ -24,11 +24,11 @@ export class ApiService {
       .pipe(map(({ items }) => items.map((item) => item.login)))
   }
 
-  getUserDetails(username: string) {
+  getUserDetails(username: string): Observable<GithubUser> {
     return this.http.get<GithubUser>(`${this.apiUrl}/users/${username}`)
   }
 
-  getUserRepos(username: string, page = 1) {
+  getUserRepos(username: string, page = 1): Observable<Repo[]> {
     return this.http.get<Array<Repo>>(
       `${this.apiUrl}/users/${username}/repos?per_page=10&page=${page}`
     )

@@ -1,0 +1,26 @@
+<div class="app-user-repo-card card flex-grow-1 h-100">
+  <div class="card-body">
+    <h5 class="card-title">{{ repo?.name }}</h5>
+    <p class="card-text">{{ repo?.description }}</p>
+  </div>
+  <div class="card-footer">
+    <div *ngIf="topics$ | async as topics; else showLanguage">
+      <button
+        type="button"
+        *ngFor="let topic of topics"
+        class="btn btn-outline-primary btn-sm mx-1 my-1"
+      >
+        {{ topic }}
+      </button>
+    </div>
+    <ng-template #showLanguage>
+      <button
+        *ngIf="repo?.language"
+        type="button"
+        class="btn btn-outline-primary btn-sm"
+      >
+        {{ repo?.language }}
+      </button>
+    </ng-template>
+  </div>
+</div>

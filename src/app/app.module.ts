@@ -18,8 +18,8 @@ import { UserDetailsComponent } from "./components/user-details/user-details.com
 import { UserReposComponent } from "./components/user-repos/user-repos.component"
 import { UserRepoCardComponent } from "./components/user-repo-card/user-repo-card.component"
 import { UpperMaxNumPipe } from "./pipes/upper-max-num.pipe"
-import { UserRepoLoadingComponent } from "./components/user-repo-loading/user-repo-loading.component";
-import { UserDetailsLoadingComponent } from './components/user-details-loading/user-details-loading.component'
+import { UserRepoLoadingComponent } from "./components/user-repo-loading/user-repo-loading.component"
+import { UserDetailsLoadingComponent } from "./components/user-details-loading/user-details-loading.component"
 
 @NgModule({
   declarations: [

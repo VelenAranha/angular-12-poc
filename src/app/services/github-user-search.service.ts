@@ -5,24 +5,25 @@ import { BehaviorSubject } from "rxjs"
   providedIn: "root",
 })
 export class GithubUserSearchService {
-  constructor() {}
-
   public githubUserSub$ = new BehaviorSubject<string>("johnpapa")
   githubUser$ = this.githubUserSub$.asObservable()
 
   public currentPageSub$ = new BehaviorSubject(1)
   currentPage$ = this.currentPageSub$.asObservable()
 
-  updateUser(username: string) {
+  updateUser(username: string): undefined {
     this.githubUserSub$.next(username)
     this.resetCurrentPage()
+    return
   }
 
-  resetCurrentPage() {
+  resetCurrentPage(): undefined {
     this.currentPageSub$.next(1)
+    return
   }
 
-  updateCurrentPage(page: number) {
+  updateCurrentPage(page: number): undefined {
     this.currentPageSub$.next(page)
+    return
   }
 }

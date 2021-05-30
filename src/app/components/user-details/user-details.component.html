@@ -1,0 +1,64 @@
+<div class="app-user-details p-5" *ngIf="!isLoading; else loadingIndicator">
+  <div
+    class="
+      user-details-content
+      d-flex
+      flex-column flex-md-row
+      justify-content-md-center
+      align-items-center
+    "
+    *ngIf="userDetails; else loadingIndicator"
+  >
+    <div class="avatar">
+      <img
+        class="rounded-circle"
+        height="200"
+        width="200"
+        [src]="userDetails.avatar_url"
+        alt=""
+      />
+    </div>
+    <div class="card ml-5">
+      <div class="card-body">
+        <h5 class="card-title">{{ userDetails.name }}</h5>
+        <p class="card-text">{{ userDetails.bio }}</p>
+        <div>
+          <p class="card-text">
+            <img
+              class="icon-map-pin"
+              src="/assets/icons/map-pin.svg"
+              height="16px"
+            />
+            <span>{{ userDetails.location }}</span>
+          </p>
+          <a
+            *ngIf="userDetails.twitter_username"
+            class="card-link"
+            [href]="'https://twitter.com/' + userDetails.twitter_username"
+          >
+            <img
+              class="icon-map-pin"
+              src="/assets/icons/twitter.svg"
+              height="16px"
+            />
+            <span>@{{ userDetails.twitter_username }}</span></a
+          >
+          <a
+            class="card-link"
+            [href]="'https://github.com/' + userDetails.login"
+          >
+            <img
+              class="icon-map-pin"
+              src="/assets/icons/github.svg"
+              height="16px"
+            />
+            <span> {{ userDetails.login }}</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loadingIndicator>
+  <app-user-details-loading></app-user-details-loading>
+</ng-template>
