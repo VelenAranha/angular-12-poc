@@ -1,27 +1,49 @@
-# GitRepos
+# POC Angular-12:- _List github repos by github username_
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+Design a Github repositories listing page by passing the required Github username.
 
-## Development server
+## Development
+
+### Tech
+
+- [Angular](https://angular.io/) version 12
+- [node.js] - version 14
+
+### Installation
+
+```sh
+npm i
+```
+
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### Running lint
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng lint` to execute the code linting
 
-## Further help
+Lint is enhanced by following plugins
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `@angular-eslint/recommended`
+- `prettier/recommended`
+
+### NPM libraries
+
+| Libraries           | version  | details                                                   |
+| ------------------- | -------- | --------------------------------------------------------- |
+| ng-bootstrap        | [v9]()   | only using `NgbPaginationModule` and `NgbTypeaheadModule` |
+| bootstrap           | [v5]()   |
+| ngx-skeleton-loader | [link]() | intutive space filler while loading                       |
+
+### TODO
+
+- Handle API error exceptions
+
+## License
+
+MIT
