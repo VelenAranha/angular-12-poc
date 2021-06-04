@@ -11,18 +11,18 @@ export class GithubUserSearchService {
   public currentPageSub$ = new BehaviorSubject(1)
   currentPage$ = this.currentPageSub$.asObservable()
 
-  updateUser(username: string): undefined {
+  updateUser(username: string): void {
     this.githubUserSub$.next(username)
     this.resetCurrentPage()
     return
   }
 
-  resetCurrentPage(): undefined {
+  resetCurrentPage(): void {
     this.currentPageSub$.next(1)
     return
   }
 
-  updateCurrentPage(page: number): undefined {
+  updateCurrentPage(page: number): void {
     this.currentPageSub$.next(page)
     return
   }

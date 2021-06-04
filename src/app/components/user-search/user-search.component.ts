@@ -26,7 +26,7 @@ export class UserSearchComponent {
     private githubUserSearch: GithubUserSearchService
   ) {}
 
-  update(username: string): undefined {
+  update(username: string): void {
     this.githubUserSearch.updateUser(username)
     return
   }
