@@ -31,6 +31,11 @@ export class UserSearchComponent {
     return
   }
 
+  /**
+   * @method search is operator function that recieves and returns an Observable
+   * @param text$ is the text to be searched in API
+   * @returns List of github user matched from API
+   */
   search: OperatorFunction<string, readonly string[]> = (
     text$: Observable<string>
   ) =>

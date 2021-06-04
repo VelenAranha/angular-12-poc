@@ -14,6 +14,10 @@ export class AppComponent {
   loadingUserDetails = true
   loadingUserRepos = true
 
+  /**
+   * @property userDetails$
+   * @description emits the user details from API
+   */
   userDetails$ = this.githubUserSearchService.githubUser$.pipe(
     tap(() => (this.loadingUserDetails = true)),
     switchMap((username) =>
@@ -23,6 +27,13 @@ export class AppComponent {
     )
   )
 
+  /**
+   * @property userRepos$
+   * @description emits the list of repos from API
+   * - Uses `throttleTime` to avoid multiple API call when
+   * githubUser$ and currentPage$ (pagination) values are changed rapidly
+   * and returns the latest changed values to the API
+   */
   userRepos$ = combineLatest([
     this.githubUserSearchService.githubUser$,
     this.githubUserSearchService.currentPage$,
@@ -45,7 +56,7 @@ export class AppComponent {
     return this.githubUserSearchService.currentPage$
   }
 
-  updatePage(page: number): undefined {
+  updatePage(page: number): void {
     this.githubUserSearchService.updateCurrentPage(page)
     return
   }
