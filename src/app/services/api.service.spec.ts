@@ -18,35 +18,7 @@ describe("UserService", () => {
     expect(apiService).toBeTruthy()
   })
 
-  it("getUsers should return expected github usernames fron the API results (HttpClient called once)", (done: DoneFn) => {
-    const apiResultSample: UserSearchResults = {
-      total_count: 2,
-      incomplete_results: false,
-      items: [
-        {
-          id: 23,
-          login: "johnpapa",
-        },
-        {
-          id: 28,
-          login: "johnpapa24",
-        },
-      ],
-    }
-
-    const expectedResultSample = ["johnpapa", "johnpapa24"]
-
-    httpClientSpy.get.and.returnValue(of(apiResultSample))
-
-    apiService.getUsers("johnpapa").subscribe((results) => {
-      expect(results).toEqual(expectedResultSample, "expected output")
-      done()
-    }, done.fail)
-
-    expect(httpClientSpy.get.calls.count()).toBe(1, "one call")
-  })
-
-  it("getUsers should return expected github usernames fron the API results (HttpClient called once)", (done: DoneFn) => {
+  it("API results on user search should be formatted to return list github usernames (HttpClient called once)", (done: DoneFn) => {
     const apiResultSample: UserSearchResults = {
       total_count: 2,
       incomplete_results: false,

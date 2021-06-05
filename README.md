@@ -21,7 +21,14 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ### Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via Jasmine and Karma
+
+Unit testing is written to following chunks
+
+- HeaderComponent
+- UserSearchComponent
+- UpperMaxNumPipe
+- UserService
 
 ### Running lint
 
