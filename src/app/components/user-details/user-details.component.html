@@ -23,7 +23,7 @@
         <h5 class="card-title">{{ userDetails.name }}</h5>
         <p class="card-text">{{ userDetails.bio }}</p>
         <div>
-          <p class="card-text">
+          <p class="card-text" *ngIf="userDetails.location">
             <img
               class="icon-map-pin"
               src="/assets/icons/map-pin.svg"
@@ -35,6 +35,7 @@
             *ngIf="userDetails.twitter_username"
             class="card-link"
             [href]="'https://twitter.com/' + userDetails.twitter_username"
+            target="_blank"
           >
             <img
               class="icon-map-pin"
@@ -46,6 +47,7 @@
           <a
             class="card-link"
             [href]="'https://github.com/' + userDetails.login"
+            target="_blank"
           >
             <img
               class="icon-map-pin"
