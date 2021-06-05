@@ -1,25 +1,76 @@
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from "@angular/common/http/testing"
-import { TestBed } from "@angular/core/testing"
+import { HttpClient } from "@angular/common/http"
+import { of } from "rxjs"
+import { UserSearchResults } from "../interfaces/searchResults.interface"
 
 import { ApiService } from "./api.service"
 
 describe("UserService", () => {
-  let service: ApiService
-  let httpTestingController: HttpTestingController
+  let httpClientSpy: { get: jasmine.Spy }
+  let apiService: ApiService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-    })
-
-    service = TestBed.inject(ApiService)
-    httpTestingController = TestBed.inject(HttpTestingController)
+    // TODO: spy on other methods too
+    httpClientSpy = jasmine.createSpyObj<HttpClient>("HttpClient", ["get"])
+    apiService = new ApiService(httpClientSpy as any)
   })
 
   it("should be created", () => {
-    expect(service).toBeTruthy()
+    expect(apiService).toBeTruthy()
+  })
+
+  it("getUsers should return expected github usernames fron the API results (HttpClient called once)", (done: DoneFn) => {
+    const apiResultSample: UserSearchResults = {
+      total_count: 2,
+      incomplete_results: false,
+      items: [
+        {
+          id: 23,
+          login: "johnpapa",
+        },
+        {
+          id: 28,
+          login: "johnpapa24",
+        },
+      ],
+    }
+
+    const expectedResultSample = ["johnpapa", "johnpapa24"]
+
+    httpClientSpy.get.and.returnValue(of(apiResultSample))
+
+    apiService.getUsers("johnpapa").subscribe((results) => {
+      expect(results).toEqual(expectedResultSample, "expected output")
+      done()
+    }, done.fail)
+
+    expect(httpClientSpy.get.calls.count()).toBe(1, "one call")
+  })
+
+  it("getUsers should return expected github usernames fron the API results (HttpClient called once)", (done: DoneFn) => {
+    const apiResultSample: UserSearchResults = {
+      total_count: 2,
+      incomplete_results: false,
+      items: [
+        {
+          id: 23,
+          login: "johnpapa",
+        },
+        {
+          id: 28,
+          login: "johnpapa24",
+        },
+      ],
+    }
+
+    const expectedResultSample = ["johnpapa", "johnpapa24"]
+
+    httpClientSpy.get.and.returnValue(of(apiResultSample))
+
+    apiService.getUsers("johnpapa").subscribe((results) => {
+      expect(results).toEqual(expectedResultSample, "expected output")
+      done()
+    }, done.fail)
+
+    expect(httpClientSpy.get.calls.count()).toBe(1, "one call")
   })
 })
