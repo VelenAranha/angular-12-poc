@@ -6,7 +6,6 @@ import { ApiService } from "src/app/services/api.service"
 @Component({
   selector: "app-user-repo-card",
   templateUrl: "./user-repo-card.component.html",
-  styleUrls: ["./user-repo-card.component.scss"],
 })
 export class UserRepoCardComponent {
   topics$: Observable<string[]> = of([])
