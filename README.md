@@ -28,7 +28,7 @@ Unit testing is written to following chunks
 - HeaderComponent
 - UserSearchComponent
 - UpperMaxNumPipe
-- UserService
+- ApiService
 
 ### Running lint
 
