@@ -1,9 +1,10 @@
-import { Component, Input } from "@angular/core"
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core"
 import { Repo } from "src/app/interfaces/repo.interface"
 
 @Component({
   selector: "app-user-repos",
   templateUrl: "./user-repos.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserReposComponent {
   @Input()

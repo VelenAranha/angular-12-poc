@@ -1,4 +1,9 @@
-import { Component, HostListener, Input } from "@angular/core"
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  Input,
+} from "@angular/core"
 import { Observable, of } from "rxjs"
 import { Repo } from "src/app/interfaces/repo.interface"
 import { ApiService } from "src/app/services/api.service"
@@ -13,6 +18,7 @@ import { ApiService } from "src/app/services/api.service"
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserRepoCardComponent {
   topics$: Observable<string[]> = of([])
@@ -25,10 +31,8 @@ export class UserRepoCardComponent {
   @Input()
   set repo(val: Repo | null) {
     this._repo = val
-    if (this._repo !== null) {
-      this.topics$ = this.apiService.getRepoTopics(
-        this.repo?.languages_url as string
-      )
+    if (this._repo !== null && this.repo?.languages_url) {
+      this.topics$ = this.apiService.getRepoTopics(this.repo.languages_url)
     }
   }
 
